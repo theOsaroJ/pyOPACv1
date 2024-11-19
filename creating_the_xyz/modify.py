@@ -1,5 +1,6 @@
 import argparse
 
+
 def modify_xyz_file(input_file, output_file):
     with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
         lines = infile.readlines()
