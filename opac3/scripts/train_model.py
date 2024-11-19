@@ -18,7 +18,7 @@ def main():
     parser.add_argument('--targets-file', type=str, required=True, help='CSV file containing target properties.')
     parser.add_argument('--model-output', type=str, required=True, help='File to save the trained model.')
     parser.add_argument('--epochs', type=int, default=100, help='Number of training epochs.')
-    parser.add_argument('--test-size', type=float, default=0.2, help='Proportion of the dataset to include in the test split.')
+    parser.add_argument('--validation-size', type=float, default=0.2, help='Proportion of the dataset to include in the test split.')
 
     # Hyperparameters
     parser.add_argument('--learning-rate', type=float, default=1e-3, help='Learning rate for the optimizer.')
@@ -44,7 +44,7 @@ def main():
     target_columns = [col for col in df_targets.columns if col != 'mol_id']
 
     # Split data into training and testing sets
-    train_df, test_df = train_test_split(df, test_size=args.test_size, random_state=42)
+    train_df, test_df = train_test_split(df, test_size=args.validation_size, random_state=42)
 
     # Create training dataset
     train_descriptors = train_df[descriptor_columns].to_dict('records')
