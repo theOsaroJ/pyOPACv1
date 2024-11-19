@@ -1,1 +1,1 @@
-Put molecules to be tested here
+Put your test molecules XYZ
