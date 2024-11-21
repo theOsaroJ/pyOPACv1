@@ -6,7 +6,7 @@ import torch
 import os
 from copy import deepcopy
 from data_loader import MoleculeDataset
-from trainer import train_model
+from trainer import train_model, evaluate_model
 from predict_with_uncertainty import predict_with_uncertainty
 from uncertainty_sampling import select_most_uncertain_samples
 from logger import get_logger
@@ -55,6 +55,12 @@ def main():
         train_descriptors = initial_train_df[descriptor_columns].to_dict('records')
         train_targets = initial_train_df[target_columns].to_dict('records')
         train_dataset = MoleculeDataset(train_descriptors, train_targets)
+
+        # Prepare test dataset
+        test_df = df.drop(initial_train_df.index).reset_index(drop=True)
+        test_descriptors = test_df[descriptor_columns].to_dict('records')
+        test_targets = test_df[target_columns].to_dict('records')
+        test_dataset = MoleculeDataset(test_descriptors, test_targets)
 
         # Train model
         input_dim = len(descriptor_columns)
@@ -105,5 +111,10 @@ def main():
     torch.save(model, args.model_output)
     logger.info(f"Active Learning completed. Model saved to {args.model_output}")
 
+    # Evaluate model on test set
+    test_loss, test_metrics = evaluate_model(model, test_dataset)
+    logger.info(f"Test Loss: {test_loss:.4f}")
+    for metric_name, metric_value in test_metrics.items():
+        logger.info(f"Test {metric_name}: {metric_value:.4f}")
 if __name__ == '__main__':
     main()
