@@ -38,4 +38,6 @@ python3 opac3/scripts/predict_properties.py \
     --descriptors-file data/new_descriptors.csv \
     --predictions-output data/predictions.csv
 
-##
+## If you want to do Active Learning ##
+
+## ---------------------------- running active learning ---------------------------- ##
