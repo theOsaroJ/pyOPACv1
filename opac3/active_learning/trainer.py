@@ -5,6 +5,8 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
 from logger import get_logger
+from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
+
 
 logger = get_logger(__name__)
 
@@ -53,3 +55,30 @@ def train_model(
         avg_loss = total_loss / len(dataloader)
         logger.info(f"Epoch {epoch+1}/{epochs}, Loss: {avg_loss:.4f}")
     return model
+
+def evaluate_model(model, dataset, batch_size=32):
+    dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=False)
+    criterion = nn.MSELoss()
+    model.eval()
+    total_loss = 0.0
+    all_targets = []
+    all_predictions = []
+    with torch.no_grad():
+        for batch in dataloader:
+            inputs, targets = batch['descriptors'], batch['targets']
+            outputs = model(inputs)
+            loss = criterion(outputs, targets)
+            total_loss += loss.item()
+            all_targets.extend(targets.numpy())
+            all_predictions.extend(outputs.numpy())
+    avg_loss = total_loss / len(dataloader)
+    # Compute additional metrics
+    mse = mean_squared_error(all_targets, all_predictions)
+    mae = mean_absolute_error(all_targets, all_predictions)
+    r2 = r2_score(all_targets, all_predictions)
+    metrics = {
+        'MSE': mse,
+        'MAE': mae,
+        'R2_Score': r2
+    }
+    return avg_loss, metrics
