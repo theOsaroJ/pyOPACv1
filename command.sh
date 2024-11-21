@@ -41,3 +41,23 @@ python3 opac3/scripts/predict_properties.py \
 ## If you want to do Active Learning ##
 
 ## ---------------------------- running active learning ---------------------------- ##
+python3 opac3/active_learning/active_learning.py \
+    --descriptors-file data/descriptors.csv \
+    --targets-file data/targets.csv \
+    --initial-train-size 10 \
+    --query-size 5 \
+    --iterations 2 \
+    --model-output models/al_trained_model.pth \
+    --hidden-dim 256 \
+    --epochs 50 \
+    --batch-size 16 \
+    --learning-rate 1e-4 \
+    --weight-decay 1e-4
+
+## ---------------------------predict the properties of new molecules with the AL model -----------------------##
+python3 opac3/active_learning/predict_new_data.py \
+    --model-file models/al_trained_model.pth \
+    --descriptors-file data/new_descriptors.csv \
+    --predictions-output data/new_predictions.csv
+
+
