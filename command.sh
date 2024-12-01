@@ -5,8 +5,10 @@
 # --> computing descriptors for new molecules after running python modify.py and moving file to right place ( see creating_xyz_files) for more details --
 # --> predicting properties of new molecule.
 ## --------------------------------- first make sure the multi-mol xyz of training data (xyz) is done in right form ---------------------###
-python3 create_xyz_files/modify.py sample_molecules.xyz train.xyz    ## sample_molecules.xyz is just an example
-cp create_xyz_files/train.xyz data/train.xyz
+cd create_xyz_files/
+python3 modify.py training_example.xyz train.xyz    ## sample_molecules.xyz is just an example
+cp train.xyz ../data/train.xyz
+cd ..
 
 ### --------------------------------- preprocessing training xyz into descriptors gotten from RDKit ------------------------------------- ###
 python3 opac3/scripts/preprocess_data.py \
