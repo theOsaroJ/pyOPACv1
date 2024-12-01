@@ -11,3 +11,6 @@ conda create -n openbabel_env
 conda activate openbabel_env
 conda install conda-forge::openbabel
 
+pip install -r requirements.txt
+
+pip install -e .
