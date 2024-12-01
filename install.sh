@@ -14,3 +14,6 @@ conda install conda-forge::openbabel
 pip install -r requirements.txt
 
 pip install -e .
+
+source ~/miniconda3/bin/activate
+conda activate openbabel_env
