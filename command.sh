@@ -6,7 +6,7 @@
 # --> predicting properties of new molecule.
 ## --------------------------------- first make sure the multi-mol xyz of training data (xyz) is done in right form ---------------------###
 cd creating_the_xyz/
-python3 modify.py training_example.xyz train.xyz    ## sample_molecules.xyz is just an example
+python3 modify.py train_example.xyz train.xyz    ## sample_molecules.xyz is just an example
 cp train.xyz ../data/train.xyz
 cd ..
 
