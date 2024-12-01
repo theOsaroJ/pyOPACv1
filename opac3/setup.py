@@ -20,5 +20,7 @@ setup(
         'ase',
         'matplotlib',
         'tqdm',
+        'openbabel',
+        'pybel',
     ],
 )
