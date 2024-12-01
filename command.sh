@@ -5,7 +5,7 @@
 # --> computing descriptors for new molecules after running python modify.py and moving file to right place ( see creating_xyz_files) for more details --
 # --> predicting properties of new molecule.
 ## --------------------------------- first make sure the multi-mol xyz of training data (xyz) is done in right form ---------------------###
-cd create_xyz_files/
+cd creating_the_xyz/
 python3 modify.py training_example.xyz train.xyz    ## sample_molecules.xyz is just an example
 cp train.xyz ../data/train.xyz
 cd ..
@@ -29,7 +29,7 @@ python3 opac3/scripts/train_model.py \
     --weight-decay 1e-4
 
 ## ------------------------------------- get new descriptors of test molecules in right xyz format ---------------------------##
-cd create_xyz_files/
+cd creating_the_xyz/
 python3 modify.py test.xyz test_modified.xyz
 cp test_modified.xyz ../data/testing_xyz_files
 cd ..
