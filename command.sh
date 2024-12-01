@@ -30,7 +30,7 @@ python3 opac3/scripts/train_model.py \
 
 ## ------------------------------------- get new descriptors of test molecules in right xyz format ---------------------------##
 cd creating_the_xyz/
-python3 modify.py test.xyz test_modified.xyz
+python3 modify.py test_example.xyz test_modified.xyz
 cp test_modified.xyz ../data/testing_xyz_files
 cd ..
 
