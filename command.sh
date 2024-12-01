@@ -7,7 +7,7 @@
 ## --------------------------------- first make sure the multi-mol xyz of training data (xyz) is done in right form ---------------------###
 cd creating_the_xyz/
 python3 modify.py train_example.xyz train.xyz    ## sample_molecules.xyz is just an example
-cp train.xyz ../data/train.xyz
+cp train.xyz ../data/training_xyz_files/train.xyz
 cd ..
 
 ### --------------------------------- preprocessing training xyz into descriptors gotten from RDKit ------------------------------------- ###
