@@ -27,8 +27,10 @@ python3 opac3/scripts/train_model.py \
     --weight-decay 1e-4
 
 ## ------------------------------------- get new descriptors of test molecules in right xyz format ---------------------------##
-python3 create_xyz_files/modify.py test.xyz test_modified.xyz
-cp create_xyz_files/test_modified.xyz data/testing_xyz_files
+cd create_xyz_files/
+python3 modify.py test.xyz test_modified.xyz
+cp test_modified.xyz ../data/testing_xyz_files
+cd ..
 
 ## --------------------------------------- convert the test xyz to the descriptors recognized by model------------------------##
 python3 opac3/scripts/compute_descriptors.py \
