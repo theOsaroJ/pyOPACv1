@@ -23,7 +23,7 @@ python3 opac3/scripts/train_model.py \
     --model-output models/trained_model.pth \
     --epochs 200 \
     --validation-size 0.2 \
-    --learning-rate 0.01 \
+    --learning-rate 0.001 \
     --batch-size 64 \
     --hidden-dim 512 \
     --weight-decay 1e-4
