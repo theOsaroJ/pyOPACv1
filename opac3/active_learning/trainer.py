@@ -1,12 +1,11 @@
 # active_learning/trainer.py
-
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
 from logger import get_logger
-from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
-import numpy as np
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
 logger = get_logger(__name__)
 
@@ -16,10 +15,8 @@ class PropertyPredictor(nn.Module):
         self.model = nn.Sequential(
             nn.Linear(input_dim, hidden_dim),
             nn.ReLU(),
-            nn.Dropout(p=0.1),
             nn.Linear(hidden_dim, hidden_dim // 2),
             nn.ReLU(),
-            nn.Dropout(p=0.1),
             nn.Linear(hidden_dim // 2, output_dim)
         )
 
