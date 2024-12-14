@@ -51,7 +51,7 @@ python3 opac3/scripts/predict_properties.py \
 python3 opac3/active_learning/active_learning.py \
     --descriptors-file data/descriptors.csv  \
     --targets-file data/targets.csv  \
-    --initial-train-size 1000  \
+    --initial-train-size 2  \
     --query-size 5   --iterations 2  \
     --model-output models/al_trained_model.pth \
     --hidden-dim 128   \
