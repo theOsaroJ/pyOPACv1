@@ -122,5 +122,9 @@ def main():
     torch.save(model, args.model_output)  # Save entire model object
     logger.info(f"Active Learning completed. Final model saved to {args.model_output}")
 
+    # Save final AL training set
+    final_train_df_path = "data/final_al_training_data.csv"
+    initial_train_df.to_csv(final_train_df_path, index=False)
+    logger.info(f"Saved final AL training data to {final_train_df_path}")
 if __name__ == '__main__':
     main()
