@@ -22,7 +22,7 @@ python3 opac3/scripts/train_model.py \
     --targets-file data/targets.csv \
     --model-output models/trained_model.pth \
     --epochs 200 \
-    --validation-size 0.2 \
+    --test-size 0.2 \
     --learning-rate 0.001 \
     --batch-size 64 \
     --hidden-dim 512 \
