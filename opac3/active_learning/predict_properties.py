@@ -1,4 +1,4 @@
-
+#active_learning/predict_properties.py
 import argparse
 import pandas as pd
 import torch
