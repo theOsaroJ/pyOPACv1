@@ -1,4 +1,4 @@
-# compute_descriptors.py
+# opac3/scripts/compute_descriptors.py
 
 import argparse
 import os
