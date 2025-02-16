@@ -1,4 +1,4 @@
-# predict_properties.py
+# pacs/scripts/predict_properties.py
 
 import argparse
 import pandas as pd
